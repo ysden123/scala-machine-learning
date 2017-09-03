@@ -32,7 +32,6 @@ object WordCount extends App {
   def calculateWordCountWithSpark(): Unit = {
     val conf = new SparkConf().setAppName("WordCount").setMaster("local[*]")
     val sc = new SparkContext(conf)
-//    sc.setLogLevel("error")
 
     val linesRdd = sc.textFile(PSparkUtil.getResourceFilePath("data/wordcount/words.txt"))
     val counts = linesRdd.flatMap(line => line.split("\\W+"))

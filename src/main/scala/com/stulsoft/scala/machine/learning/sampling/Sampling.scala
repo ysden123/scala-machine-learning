@@ -9,6 +9,7 @@ import java.io.{File, FileWriter}
 import scala.io.Source
 import scala.reflect.ClassTag
 import scala.util.{Properties, Random}
+import scala.util.hashing.MurmurHash3._
 
 /**
   * See "Mastering Scala Machine Learning by Alez Kozlov", chaprt 1
@@ -19,6 +20,7 @@ object Sampling extends App {
 
   sampling01()
   sampling02()
+  sampling03()
 
   def sampling01(): Unit = {
     val threshold = 0.05
@@ -58,6 +60,19 @@ object Sampling extends App {
     val w = new FileWriter(new File("out2.txt"))
     val lines = Source.fromURL(getClass.getResource("/data/iris/in.txt")).getLines()
     reservoirSample(lines, numLines).foreach(s => w.write(s + Properties.lineSeparator))
+    w.close()
+  }
+
+  def sampling03(): Unit = {
+    def consistentFilter(s: String, seed: Int, markLow: Int, markHigh: Int): Boolean = {
+      val hash = stringHash(s.split(" ")(0), seed) >>> 16
+      hash >= markLow && hash < markHigh
+    }
+
+    val w = new FileWriter(new File("out3.txt"))
+    val lines = Source.fromURL(getClass.getResource("/data/iris/in.txt")).getLines()
+    lines.filter(s => consistentFilter(s, 12345, 0, 4096))
+      .foreach(s => w.write(s + Properties.lineSeparator))
     w.close()
   }
 }

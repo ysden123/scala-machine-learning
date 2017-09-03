@@ -26,7 +26,7 @@ object WordCount extends App {
             List((c, 1))
         }
       }
-    println(s"calculateWordCount- counts: $counts")
+    println(s"calculateWordCount- counts: ${counts.sortBy(t => t._1)}")
   }
 
   def calculateWordCountWithSpark(): Unit = {
@@ -42,7 +42,7 @@ object WordCount extends App {
       .collect()
 
     println(Properties.lineSeparator)
-    println(s"calculateWordCountWithSpark- counts: ${counts.toList}")
+    println(s"calculateWordCountWithSpark- counts: ${counts.toList.sortBy(t => t._1)}")
 
     sc.stop
   }

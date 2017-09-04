@@ -3,6 +3,7 @@ package com.stulsoft.scala.machine.learning.core
 import scala.util.Try
 
 /**
+  * @see Scala for Machine Learning by Patrick Nikolas
   * @author Yuriy Stul.
   */
 object Types {

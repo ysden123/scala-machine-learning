@@ -31,8 +31,8 @@ object Plotter extends App {
       (f(HIGH_INDEX).toDouble - f(LOW_INDEX).toDouble,
         f(VOL_COLUMN_INDEX).toDouble)).toVector.unzip
 
-    val volatility = MinMax[Double](volatilityVolume._1).get.normalize(0.0, 1.0)
-    val normVolume = MinMax[Double](volatilityVolume._2).get.normalize(0.0, 1.0)
+    val volatility = MinMax[Double](volatilityVolume._1).get.normalize()
+    val normVolume = MinMax[Double](volatilityVolume._2).get.normalize()
 
     println("Line plot for CSCO stock normalized volume")
     val labels1 = Legend("Plotter", "Line plotting CSCO 2012-13 Stock volume", "Volume", "r")

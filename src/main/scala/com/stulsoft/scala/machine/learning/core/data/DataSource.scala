@@ -106,7 +106,7 @@ final class DataSource(
       val convert = (f: Fields => Double) => data._2.map(f(_))
 
       if (config.normalize)
-        fields.map(t => new MinMax[Double](convert(t)).normalize(0.0, 1.0).toArray).toVector
+        fields.map(t => new MinMax[Double](convert(t)).normalize().toArray).toVector
       else
         fields.map(convert(_)).toVector
     })
@@ -126,7 +126,7 @@ final class DataSource(
   def get(extr: Fields => Double): Try[DblVector] = load.map(data => {
 
     val nData = data._2.map(extr(_)).toVector
-    if (config.normalize) new MinMax[Double](nData).normalize(0.0, 1.0) else nData
+    if (config.normalize) new MinMax[Double](nData).normalize() else nData
   })
 
 

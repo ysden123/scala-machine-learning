@@ -172,7 +172,7 @@ object XTSeries {
     val min = Array.fill(dim)(Double.MaxValue)
     val max = Array.fill(dim)(-Double.MaxValue)
 
-    val _xv = xt.toVector
+    val _xv = xt
 
     // computes min and max
     while (k < xt.size) {
@@ -310,6 +310,6 @@ object XTSeries {
   @throws(classOf[IllegalArgumentException])
   def statistics[T <: AnyVal](xt: XVSeries[T])(implicit f: T => Double): Vector[Stats[T]] = {
     require(xt.nonEmpty || dimension(xt) > 0, "XTSeries.statistics input time series undefined")
-    xt.transpose.map(Stats[T](_))
+    xt.transpose.map(Stats[T])
   }
 }

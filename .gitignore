@@ -1,2 +1,9 @@
 *.class
 *.log
+.idea/
+project/target/
+target/
+out.txt
+out1.txt
+out2.txt
+out3.txt

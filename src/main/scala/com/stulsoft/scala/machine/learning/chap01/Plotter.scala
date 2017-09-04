@@ -2,7 +2,7 @@ package com.stulsoft.scala.machine.learning.chap01
 
 import com.stulsoft.scala.machine.learning.plots._
 import com.stulsoft.scala.machine.learning.stats.MinMax
-import com.stulsoft.scala.machine.learning.utils.PSparkUtil
+import com.stulsoft.scala.machine.learning.util.PSparkUtil
 
 import scala.io.Source
 

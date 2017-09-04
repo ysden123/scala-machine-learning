@@ -1,4 +1,4 @@
-package com.stulsoft.scala.machine.learning.utils
+package com.stulsoft.scala.machine.learning.util
 
 import java.io.File
 

@@ -1,7 +1,6 @@
 package com.stulsoft.scala.machine.learning.wordcount
 
-
-import com.stulsoft.scala.machine.learning.utils.PSparkUtil
+import com.stulsoft.scala.machine.learning.util.PSparkUtil
 import org.apache.spark.{SparkConf, SparkContext}
 
 import scala.io.Source

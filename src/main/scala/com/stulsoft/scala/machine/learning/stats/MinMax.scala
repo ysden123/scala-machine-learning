@@ -119,7 +119,7 @@ class MinMaxVector(series: Vector[DblArray]) {
   final def normalize(x: DblArray): Try[DblArray] = {
     val normalized = minMaxVector.zip(x).map { case (from, to) => from.normalize(to) }
 
-    if (normalized.contains(None))
+    if (normalized.isEmpty)
       throw new IllegalStateException("MinMax.normalize normalization params undefined")
     Try(normalized.map(_.get).toArray)
   }

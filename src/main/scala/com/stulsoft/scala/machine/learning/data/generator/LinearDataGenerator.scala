@@ -13,8 +13,12 @@ import org.jfree.ui.RefineryUtilities
   */
 case class LinearDataGenerator(k: Double, offset: Double, deviation: Double, step: Double, n: Int) {
   def generateData(): Seq[(Double, Double)] = {
+    def getX(i: Int): Double = step * i
+
+    def getY(x: Double): Double = offset + k * x
+
     for {i <- 1 to n}
-      yield (step * i, offset + k * step * i)
+      yield (getX(i), getY(getX(i)))
   }
 }
 

@@ -14,15 +14,14 @@ import scala.util.Random
   * @author Yuriy Stul
   */
 case class LinearDataGenerator(k: Double, offset: Double, deviation: Double, step: Double, n: Int) {
+
   def generateData(): Seq[(Double, Double)] = {
-    def getX(i: Int): Double = step * i
-
-    def getY(x: Double): Double = {
-      offset + k * x + deviation * Random.nextDouble() * (if (Random.nextBoolean()) 1 else -1)
+    for {i <- 1 to n} yield {
+      val x = step * i
+      val theDeviation = (if (Random.nextBoolean()) 1 else -1) * deviation * Random.nextDouble()
+      val y = offset + k * x + theDeviation
+      (x, y)
     }
-
-    for {i <- 1 to n}
-      yield (getX(i), getY(getX(i)))
   }
 }
 

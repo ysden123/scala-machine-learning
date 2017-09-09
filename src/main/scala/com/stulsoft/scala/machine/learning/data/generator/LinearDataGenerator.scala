@@ -16,12 +16,12 @@ import scala.util.Random
 case class LinearDataGenerator(k: Double, offset: Double, deviation: Double, step: Double, n: Int) {
 
   def generateData(): Seq[(Double, Double)] = {
-    for {i <- 1 to n} yield {
+    (1 to n).map(i => {
       val x = step * i
       val theDeviation = (if (Random.nextBoolean()) 1 else -1) * deviation * Random.nextDouble()
       val y = offset + k * x + theDeviation
       (x, y)
-    }
+    })
   }
 }
 
